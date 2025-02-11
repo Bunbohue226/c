@@ -9,8 +9,8 @@ function handleYes() {
     // Hiển thị thông điệp yêu thương và mở file y.htm
     const container = document.querySelector('.container');
     container.innerHTML = `
-        <h1> <p> Yay!  </p> </h1>
-        <button onclick="openFile('y.html')">next</button>
+        <h1> <p> Yay! I love you so much bb ❤️ </p> </h1>
+        
     `;
     document.body.style.backgroundImage = "url('love-background.jpg')"; // Thay đổi ảnh nền
 }
