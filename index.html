@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>valentine</title>
+    <title>Valentine</title>
     <style>
-        /* Đặt ảnh nền và căn giữa nội dung */
         body {
             margin: 0;
             padding: 0;
@@ -13,7 +12,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url('background.jpg'); /* Thay bằng đường dẫn ảnh nền của bạn */
+            background-image: url('background.jpg'); 
             background-size: cover;
             background-position: center;
             font-family: Arial, sans-serif;
@@ -21,16 +20,23 @@
             text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
         }
 
-        /* Hộp nội dung chính */
         .container {
             text-align: center;
-            background-color: rgba(0, 0, 0, 0.6); /* Nền trong suốt */
+            background-color: rgba(0, 0, 0, 0.6);
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
-        /* Nút bấm */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 50px; /* Khoảng cách giữa hai nút */
+            margin-top: 20px;
+            position: relative;
+        }
+
         button {
             background-color: #28a745;
             border: none;
@@ -39,31 +45,55 @@
             font-size: 16px;
             border-radius: 5px;
             cursor: pointer;
-            margin: 10px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
         }
 
         button:hover {
             background-color: #218838;
         }
 
-        button.no {
+        .no {
             background-color: #dc3545;
+            position: absolute;
+            transition: transform 0.2s ease-in-out;
         }
 
-        button.no:hover {
+        .no:hover {
             background-color: #c82333;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>will you be my valentine</h1>
-        <button onclick="handleYes()">Yes</button>
-        <button class="no" onclick="handleNo()">No</button>
+        <h1>Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button class="yes" onclick="handleYes()">Yes</button>
+            <button class="no">  Nah  </button>
+        </div>
     </div>
 
-    <!-- Liên kết file JavaScript -->
+    <script>
+        const noButton = document.querySelector(".no");
+
+        noButton.addEventListener("mouseover", function() {
+            moveButton();
+        });
+
+        function moveButton() {
+            const container = document.querySelector(".container");
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            let maxX = containerRect.width - buttonRect.width - 20;
+            let maxY = containerRect.height - buttonRect.height - 20;
+
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+
+            noButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+    </script>
+
     <script src="script.js"></script>
 </body>
 </html>
